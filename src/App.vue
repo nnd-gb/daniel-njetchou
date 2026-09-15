@@ -160,6 +160,7 @@ main {
   display: flex;
   align-items: center;
   gap: 11px;
+  color: var(--text);
   font-weight: 800;
   font-size: 14px;
   letter-spacing: -0.4px;
