@@ -10,7 +10,7 @@ const projects = [
     description:
       "Architecture multi-sites conçue sur Cisco Packet Tracer, avec segmentation et services réseau résilients.",
     technologies: ["OSPF", "RIP", "EtherChannel", "DNS"],
-    result: "6 sites interconnectés",
+    result: "6 sites interconnectés (Packet Tracer)",
   },
   {
     number: "02",
