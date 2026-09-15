@@ -1,290 +1,508 @@
 <script setup>
-import { ref } from 'vue'
-import ProjectCard from '../components/ProjectCard.vue'
-import networkImage from '../assets/network.png'
-import devImage from '../assets/dev.png'
-import socImage from '../assets/soc.png'
-import cvFile from '../views/CV_NJETCHOU_NZEPA_DANIEL_2026.pdf'
-
-const cvDriveLink = cvFile
-
-const projects = ref([
+import ProjectCard from "../components/ProjectCard.vue";
+import cvFile from "./CV_NJETCHOU_NZEPA_DANIEL_2026.pdf";
+const projects = [
   {
+    number: "01",
+    type: "NETWORK SECURITY",
+    icon: "⌘",
     title: "Infrastructure réseau sécurisée",
-    description: "Conception d'une infrastructure réseau avec 6 sites interconnectés sur Cisco Packet Tracer.",
+    description:
+      "Architecture multi-sites conçue sur Cisco Packet Tracer, avec segmentation et services réseau résilients.",
     technologies: ["OSPF", "RIP", "EtherChannel", "DNS"],
-    image: networkImage // Vous pouvez ajouter une image plus tard
+    result: "6 sites interconnectés",
   },
   {
-    title: "Site Web pour un restaurant",
-    description: "Développement complet d'un site web avec React.js, Laravel et PostgreSQL dans le cadre d'un projet.",
-    technologies: ["React.js", "Laravel", "PostgreSQL"],
-    image: devImage
-  },
-  {
+    number: "02",
+    type: "SECURITY OPERATIONS",
+    icon: "◉",
     title: "Infrastructure SOC",
-    description: "Mise en place d'un système d'orchestration et automatisation des réponses suite aux incidents avec l'aide de Wazuh et Shuffle dans infrastructure SOC comprennant aussi OpenVAS et Graffana.",
-    technologies: ["Wazuh", "Shuffle", "Grafana", "OpenVAS"],
-    image: socImage
-  }
-])
+    description:
+      "Mise en place d’une chaîne de supervision, d’automatisation et de réponse aux incidents pour accélérer le traitement des alertes.",
+    technologies: ["Wazuh", "Shuffle", "OpenVAS", "Grafana"],
+    result: "Détection & réponse",
+  },
+  {
+    number: "03",
+    type: "WEB DEVELOPMENT",
+    icon: "</>",
+    title: "Plateforme web restaurant",
+    description:
+      "Application web complète, pensée de la base de données à l’interface, avec une architecture moderne et maintenable.",
+    technologies: ["React.js", "Laravel", "PostgreSQL"],
+    result: "Full-stack delivery",
+  },
+];
+const skills = [
+  "SIEM / XDR",
+  "Analyse de logs",
+  "Réseaux Cisco",
+  "Vulnerability scanning",
+  "Linux / Kali",
+  "Wireshark",
+  "SOC automation",
+  "Proxmox",
+];
 </script>
 
 <template>
-  <main class="home">
-    <!-- Hero Section -->
+  <div class="home">
     <section class="hero">
-      <div class="hero-content">
-        <h1>NJETCHOU NZEPA DANIEL JORDAN</h1>
-        <h2>Étudiant en 3ème année en Génie Informatique</h2>
-        <p class="subtitle">Passionné par la cybersécurité et le développement web</p>
-        <div class="hero-buttons">
-          <router-link to="/about" class="btn primary">En savoir plus</router-link>
-          <a :href="cvDriveLink"  class="btn secondary" target="_blank">
-            Télécharger mon CV
-          </a>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><i></i> À LA RECHERCHE D’OPPORTUNITÉS</p>
+          <h1>Sécuriser.<br /><em>Comprendre.</em><br />Protéger.</h1>
+          <p class="intro">
+            Étudiant en 4e année à EFREI, campus Paris, orienté cybersécurité.
+            Je construis des environnements plus fiables, de l’infrastructure
+            réseau à la détection d’incidents.
+          </p>
+          <div class="availability">
+            <span><b>STAGE</b> Août — octobre</span
+            ><span><b>ALTERNANCE</b> Rentrée 2027</span>
+          </div>
+          <div class="actions">
+            <a href="#projects" class="button primary"
+              >Explorer mes projets <span>↓</span></a
+            ><a :href="cvFile" target="_blank" class="button ghost"
+              >Consulter le CV ↗</a
+            >
+          </div>
+        </div>
+        <div class="signal-panel">
+          <div class="panel-head">
+            <span>SECURITY STATUS</span><b>● ACTIVE</b>
+          </div>
+          <div class="radar">
+            <div class="radar-core"></div>
+            <span class="radar-dot"></span>
+          </div>
+          <div class="telemetry">
+            <p><span>FOCUS</span><strong>BLUE TEAM / SOC</strong></p>
+            <p><span>LOCATION</span><strong>PARIS, FR</strong></p>
+            <p><span>STATUS</span><strong>LEARNING · BUILDING</strong></p>
+          </div>
         </div>
       </div>
     </section>
-
-    <!-- Projets Section -->
-    <section class="projects">
-      <h2 class="section-title">Mes Projets Récents</h2>
+    <section class="proof shell">
+      <div><strong>03</strong><span>projets présentés</span></div>
+      <div><strong>04+</strong><span>outils cyber maîtrisés</span></div>
+      <div><strong>2027</strong><span>alternance recherchée</span></div>
+    </section>
+    <section id="projects" class="projects shell">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><i></i> SELECTED WORK</p>
+          <h2>Projets <em>cybersécurité</em></h2>
+        </div>
+        <p>
+          Des réalisations concrètes centrées sur la visibilité, la résilience
+          et la réponse aux incidents.
+        </p>
+      </div>
       <div class="projects-grid">
         <ProjectCard
-          v-for="(project, index) in projects"
-          :key="index"
+          v-for="project in projects"
+          :key="project.number"
           :project="project"
         />
       </div>
     </section>
-
-    <!-- Compétences rapides -->
-    <section class="skills-preview">
-      <h2 class="section-title">Compétences Clés</h2>
-      <div class="skills-cloud">
-        <span class="skill-tag">Wireshark</span>
-        <span class="skill-tag">React.js</span>
-        <span class="skill-tag">Vue.js</span>
-        <span class="skill-tag">Next.js</span>
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">Laravel</span>
-        <span class="skill-tag">CCNA 1</span>
-        <span class="skill-tag">Kali Linux</span>
-        <span class="skill-tag">Proxmox</span>
-        <span class="skill-tag">Wazuh</span>
+    <section class="skills">
+      <div class="shell skills-inner">
+        <p class="eyebrow"><i></i> TOOLKIT</p>
+        <div class="skills-layout">
+          <h2>Technologies<br />et <em>pratiques.</em></h2>
+          <div class="skill-list">
+            <span v-for="skill in skills" :key="skill"
+              >{{ skill }} <b>↗</b></span
+            >
+          </div>
+        </div>
       </div>
     </section>
-  </main>
+    <section class="cta shell">
+      <p class="eyebrow"><i></i> LET'S CONNECT</p>
+      <h2>Construisons quelque chose<br /><em>de plus sûr.</em></h2>
+      <RouterLink to="/contact" class="button primary"
+        >Me contacter <span>→</span></RouterLink
+      >
+    </section>
+  </div>
 </template>
 
 <style scoped>
-.home {
-  min-height: 100vh;
+:global(.theme-dark) .hero {
+  background:
+    radial-gradient(
+      circle at 81% 45%,
+      rgba(132, 40, 49, 0.22),
+      transparent 26%
+    ),
+    linear-gradient(120deg, #10090a, #1a0e10);
 }
-
+:global(.theme-dark) .signal-panel,
+:global(.theme-dark) .project-card {
+  background-color: #1a1012;
+}
+:global(.theme-dark) .skills {
+  background: #130d0e;
+}
+:global(.theme-light) .hero {
+  background:
+    radial-gradient(circle at 81% 45%, rgba(154, 61, 69, 0.1), transparent 28%),
+    #fafafa;
+}
 .hero {
-  background-color: #323b4c;
-  color: white;
-  padding: 4rem 2rem;
-  text-align: center;
+  min-height: 650px;
+  border-bottom: 1px solid var(--line);
 }
-
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
+.hero-grid {
+  min-height: 650px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 70px;
+  align-items: center;
 }
-
-.logo {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 2rem;
+.eyebrow {
+  color: var(--mint);
+  font:
+    500 10px "DM Mono",
+    monospace;
+  letter-spacing: 1.8px;
+  margin: 0 0 22px;
+}
+.eyebrow i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 9px;
+  background: var(--mint);
   border-radius: 50%;
-  border: 4px solid white;
+  box-shadow: 0 0 12px var(--mint);
 }
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+h1,
+h2 {
+  letter-spacing: -2.8px;
+  font-size: clamp(48px, 6vw, 78px);
+  line-height: 0.99;
+  margin: 0;
 }
-
-.hero h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  opacity: 0.9;
+em {
+  color: var(--mint);
+  font-style: normal;
 }
-
-.subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  opacity: 0.8;
+.intro {
+  max-width: 530px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 27px 0 22px;
 }
-
-.hero-buttons {
+.availability {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
 }
-
-.btn {
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.3s;
+.availability span {
+  border: 1px solid var(--line);
+  color: var(--text);
+  font:
+    11px "DM Mono",
+    monospace;
+  padding: 9px 11px;
 }
-
-.btn:hover {
-  transform: translateY(-2px);
+.availability b {
+  color: var(--mint);
+  font-weight: 500;
+  margin-right: 8px;
 }
-
-.btn.primary {
-  background: white;
-  color: #667eea;
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
-
-.btn.secondary {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
+.button {
+  min-height: 47px;
+  padding: 0 19px;
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  border: 1px solid var(--mint);
+  font-size: 12px;
+  font-weight: 800;
 }
-
-.projects, .skills-preview {
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.primary {
+  color: var(--ink);
+  background: var(--mint);
 }
-
-.section-title {
-  text-align: center;
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 3rem;
+.primary:hover {
+  filter: brightness(1.15);
+}
+.ghost {
+  color: var(--text);
+  border-color: var(--line);
+}
+.ghost:hover {
+  border-color: var(--mint);
+  color: var(--mint);
+}
+.signal-panel {
+  width: min(100%, 370px);
+  justify-self: end;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--line);
+  font:
+    10px "DM Mono",
+    monospace;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+.panel-head b {
+  color: var(--mint);
+  font-weight: 400;
+}
+.radar {
+  margin: 30px auto;
+  width: 200px;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 50%;
   position: relative;
+  background:
+    repeating-radial-gradient(
+      circle,
+      transparent 0 32px,
+      color-mix(in srgb, var(--mint) 13%, transparent) 33px 34px
+    ),
+    linear-gradient(
+      90deg,
+      transparent 49.5%,
+      color-mix(in srgb, var(--mint) 18%, transparent) 50% 50.5%,
+      transparent 51%
+    ),
+    linear-gradient(
+      transparent 49.5%,
+      color-mix(in srgb, var(--mint) 18%, transparent) 50% 50.5%,
+      transparent 51%
+    );
 }
-
-.section-title::after {
-  content: '';
+.radar:after {
+  content: "";
   position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: #667eea;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 320deg,
+    transparent 0 70%,
+    color-mix(in srgb, var(--mint) 22%, transparent) 82%,
+    transparent 95%
+  );
 }
-
+.radar-core {
+  position: absolute;
+  z-index: 1;
+  top: calc(50% - 5px);
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  background: var(--mint);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--mint);
+}
+.radar-dot {
+  position: absolute;
+  z-index: 1;
+  top: 37px;
+  right: 48px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mint);
+}
+.telemetry {
+  padding: 0 20px 16px;
+}
+.telemetry p {
+  margin: 0;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  font:
+    10px "DM Mono",
+    monospace;
+}
+.telemetry span {
+  color: var(--muted);
+}
+.telemetry strong {
+  font-weight: 400;
+  color: var(--text);
+}
+.proof {
+  min-height: 122px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.proof div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid var(--line);
+  padding-left: 28px;
+}
+.proof div:first-child {
+  padding-left: 0;
+}
+.proof div:last-child {
+  border: 0;
+}
+.proof strong {
+  color: var(--mint);
+  font-size: 28px;
+  letter-spacing: -1px;
+}
+.proof span {
+  color: var(--muted);
+  font-size: 11px;
+}
+.projects {
+  padding: 125px 0;
+}
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  margin-bottom: 47px;
+}
+.section-head h2,
+.skills h2,
+.cta h2 {
+  font-size: clamp(38px, 4vw, 55px);
+}
+.section-head > p {
+  max-width: 340px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
-
-.skills-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
+.skills {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
 }
-
-.skill-tag {
-  background: #f0f0f0;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  color: #555;
-  transition: all 0.3s;
+.skills-inner {
+  padding: 100px 0;
 }
-
-.skill-tag:hover {
-  background: #667eea;
-  color: white;
-  transform: scale(1.05);
+.skills-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
 }
-
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
+.skill-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line);
+}
+.skill-list span {
+  color: var(--text);
+  padding: 16px 6px;
+  font-size: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.skill-list b {
+  float: right;
+  color: var(--mint);
+  font-weight: 400;
+}
+.cta {
+  padding: 105px 0;
+}
+.cta h2 {
+  margin: 0 0 31px;
+}
+@media (max-width: 800px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 86px 0;
   }
-  
-  .hero-buttons {
-    flex-direction: column;
-  }
-}
-
-/* Responsive pour mobile */
-@media screen and (max-width: 768px) {
   .hero {
-    padding: 3rem 1rem;
+    min-height: auto;
   }
-
-  .hero h1 {
-    font-size: 1.8rem;
-    word-break: break-word;
+  .signal-panel {
+    justify-self: start;
   }
-
-  .hero h2 {
-    font-size: 1.2rem;
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
   }
-
-  .subtitle {
-    font-size: 1rem;
+  .section-head,
+  .skills-layout {
+    gap: 30px;
   }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 0 1rem;
+  .proof div {
+    padding-left: 15px;
   }
-
-  .btn {
+}
+@media (max-width: 560px) {
+  .hero-grid {
+    padding: 72px 0;
+  }
+  .signal-panel {
     width: 100%;
-    text-align: center;
-    padding: 0.8rem 1rem;
   }
-
+  .proof {
+    grid-template-columns: 1fr;
+    padding: 18px 0;
+  }
+  .proof div,
+  .proof div:first-child {
+    padding: 12px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .proof div:last-child {
+    border: 0;
+  }
   .projects {
-    padding: 2rem 1rem;
+    padding: 75px 0;
   }
-
-  .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+  .section-head,
+  .skills-layout {
+    display: block;
   }
-
+  .section-head > p {
+    margin-top: 24px;
+  }
   .projects-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
-
-  .skills-cloud {
-    gap: 0.5rem;
+  .skills-inner,
+  .cta {
+    padding: 70px 0;
   }
-
-  .skill-tag {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+  .skills h2 {
+    margin-bottom: 30px;
   }
-}
-
-@media screen and (max-width: 480px) {
-  .hero h1 {
-    font-size: 1.5rem;
-  }
-
-  .hero h2 {
-    font-size: 1rem;
-  }
-
-  .project-card {
-    margin: 0;
-  }
-
-  .skill-tag {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.6rem;
+  .skill-list {
+    grid-template-columns: 1fr;
   }
 }
-
-
 </style>

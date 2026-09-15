@@ -1,72 +1,89 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const formData = ref({
-  nom: '',
-  email: '',
-  sujet: '',
-  message: ''
-})
+const status = ref("");
 
-const envoyerMessage = () => {
-  // Ici vous pouvez ajouter la logique d'envoi du message
-  alert('Message envoyé ! Je vous répondrai dans les plus brefs délais.')
-  // Réinitialiser le formulaire
-  formData.value = { nom: '', email: '', sujet: '', message: '' }
+function submitMessage() {
+  status.value = "Envoi en cours…";
 }
 </script>
 
 <template>
-  <div class="contact">
-    <div class="container">
-      <h1 class="page-title">Contactez-moi</h1>
-      
-      <div class="contact-content">
-        <!-- Informations de contact -->
-        <div class="contact-info">
-          <h2>Restons en contact</h2>
-          <p>N'hésitez pas à me contacter pour toute opportunité professionnelle ou collaboration.</p>
-          
-          <div class="info-items">
-            <div class="info-item">
-              <span class="icon">📧</span>
-              <div>
-                <h3>Email</h3>
-                <p>njetchounzepadaniel@gmail.com</p>
-                <p>daniel.njetchou@2028.ucac-icam.com</p>
-              </div>
-            </div>
-            
-            <div class="info-item">
-              <span class="icon">📱</span>
-              <div>
-                <h3>Téléphone</h3>
-                <p>+237 698835795</p>
-              </div>
-            </div>
-            
-            <div class="info-item">
-              <span class="icon">📍</span>
-              <div>
-                <h3>Adresse</h3>
-                <p>Yassa, Douala - Cameroun</p>
-              </div>
-            </div>
-            
-            <div class="info-item">
-              <span class="icon">🔗</span>
-              <div>
-                <h3>TryHackMe</h3>
-                <p>SOC Level 1 (en cours)</p>
-              </div>
-            </div>
-          </div>
+  <div class="contact shell">
+    <p class="eyebrow"><i></i> CONTACT</p>
+    <div class="contact-grid">
+      <div>
+        <h1>Une opportunité<br />à <em>partager ?</em></h1>
+        <p class="lead">
+          Je recherche un stage d’août à octobre ainsi qu’une alternance en
+          cybersécurité pour la rentrée 2027.
+        </p>
+        <div class="direct-details">
+          <a href="tel:+33758906654">+33 7 58 90 66 54</a>
+          <span>France · Île-de-France</span>
+        </div>
+      </div>
 
-          <!-- Réseaux sociaux -->
-          <div class="social-links">
-            <a href="#" class="https://www.linkedin.com/in/daniel-jordan-njetchou-nzepa-6a057733b?utm_source=share_via&utm_content=profile&utm_medium=member_ios">LinkedIn</a>
-            <a href="#" class="https://github.com/nnd-gb">GitHub</a>
-          </div>
+      <div>
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/njetchounzepadaniel@gmail.com"
+          method="POST"
+          @submit="submitMessage"
+        >
+          <input
+            type="hidden"
+            name="_subject"
+            value="Nouveau message depuis le portfolio"
+          />
+          <input type="hidden" name="_template" value="table" />
+          <input
+            type="text"
+            name="_honey"
+            class="honeypot"
+            tabindex="-1"
+            autocomplete="off"
+          />
+
+          <label
+            >Nom<input required type="text" name="nom" placeholder="Votre nom"
+          /></label>
+          <label
+            >E-mail<input
+              required
+              type="email"
+              name="email"
+              placeholder="vous@entreprise.com"
+          /></label>
+          <label
+            >Objet<input
+              required
+              type="text"
+              name="objet"
+              placeholder="Stage, alternance, opportunité…"
+          /></label>
+          <label
+            >Message<textarea
+              required
+              name="message"
+              rows="5"
+              placeholder="Votre message"
+            ></textarea>
+          </label>
+          <button type="submit">Envoyer le message <span>→</span></button>
+          <p class="form-status" aria-live="polite">
+            {{ status || "Votre message sera envoyé directement à Daniel." }}
+          </p>
+        </form>
+
+        <div class="socials">
+          <a
+            href="https://www.linkedin.com/in/daniel-njetchou-nzepa-b465602b4"
+            target="_blank"
+            rel="noreferrer"
+            >LinkedIn ↗</a
+          >
+          <a href="mailto:njetchounzepadaniel@gmail.com">Envoyer un e-mail ↗</a>
         </div>
       </div>
     </div>
@@ -75,257 +92,141 @@ const envoyerMessage = () => {
 
 <style scoped>
 .contact {
-  background: #f5f5f5;
-  min-height: 100vh;
-  padding: 4rem 2rem;
+  padding: 105px 0 135px;
+  min-height: calc(100vh - 160px);
 }
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+.eyebrow {
+  color: var(--mint);
+  font:
+    500 10px "DM Mono",
+    monospace;
+  letter-spacing: 1.8px;
+  margin: 0 0 25px;
 }
-
-.page-title {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 3rem;
-  position: relative;
+.eyebrow i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 9px;
+  background: var(--mint);
+  border-radius: 50%;
 }
-
-.page-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: #667eea;
-}
-
-.contact-content {
-  display: inline;
+.contact-grid {
+  display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 100px;
 }
-
-.contact-info, .contact-form {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+h1 {
+  font-size: clamp(46px, 5.4vw, 73px);
+  letter-spacing: -3px;
+  line-height: 1;
+  margin: 0;
 }
-
-.contact-info h2, .contact-form h2 {
-  color: #333;
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
+em {
+  color: var(--mint);
+  font-style: normal;
 }
-
-.contact-info > p {
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+.lead {
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.8;
+  font-size: 15px;
+  margin: 28px 0;
 }
-
-.info-items {
+.direct-details {
+  border-top: 1px solid var(--line);
+  width: min(100%, 380px);
+  padding-top: 17px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 6px;
+  font:
+    12px "DM Mono",
+    monospace;
 }
-
-.info-item {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
+.direct-details a {
+  color: var(--text);
 }
-
-.info-item .icon {
-  font-size: 1.5rem;
-  min-width: 2rem;
+.direct-details a:hover {
+  color: var(--mint);
 }
-
-.info-item h3 {
-  color: #333;
-  font-size: 1rem;
-  margin-bottom: 0.25rem;
+.direct-details span {
+  color: var(--muted);
 }
-
-.info-item p {
-  color: #666;
-  line-height: 1.4;
+.contact-form {
+  padding: 27px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  display: grid;
+  gap: 15px;
 }
-
-.social-links {
-  display: flex;
-  gap: 1rem;
+.contact-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font:
+    10px "DM Mono",
+    monospace;
+  letter-spacing: 1px;
 }
-
-.social-link {
-  color: #667eea;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border: 1px solid #667eea;
-  border-radius: 25px;
-  transition: all 0.3s;
-}
-
-.social-link:hover {
-  background: #667eea;
-  color: white;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #333;
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea {
+.contact-form input,
+.contact-form textarea {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
+  border: 1px solid var(--line);
+  background: var(--ink);
+  color: var(--text);
+  padding: 12px;
+  resize: vertical;
+  font:
+    13px Manrope,
+    sans-serif;
 }
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #667eea;
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 1px solid var(--mint);
+  border-color: var(--mint);
 }
-
-.submit-btn {
-  width: 100%;
-  padding: 1rem;
-  background: #667eea;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: bold;
+.contact-form button {
+  margin-top: 3px;
+  min-height: 46px;
+  border: 1px solid var(--mint);
+  background: var(--mint);
+  color: var(--ink);
   cursor: pointer;
-  transition: background 0.3s;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: left;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
-.submit-btn:hover {
-  background: #5a67d8;
+.form-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
 }
-
-@media (max-width: 768px) {
-  .contact-content {
-    grid-template-columns: 1fr;
-  }
+.honeypot {
+  display: none;
 }
-
-/* Dans ContactView.vue */
-
-@media screen and (max-width: 768px) {
+.socials {
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.socials a:hover {
+  color: var(--mint);
+}
+@media (max-width: 650px) {
   .contact {
-    padding: 2rem 1rem;
+    padding: 70px 0;
   }
-
-  .page-title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .contact-content {
+  .contact-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .contact-info, .contact-form {
-    padding: 1.5rem;
-  }
-
-  .contact-info h2, .contact-form h2 {
-    font-size: 1.3rem;
-  }
-
-  .info-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .info-item .icon {
-    font-size: 1.3rem;
-  }
-
-  .social-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .social-link {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    padding: 0.6rem;
-    font-size: 0.95rem;
-  }
-
-  .submit-btn {
-    padding: 0.8rem;
-    font-size: 0.95rem;
+    gap: 50px;
   }
 }
-
-@media screen and (max-width: 480px) {
-  .page-title {
-    font-size: 1.8rem;
-  }
-
-  .contact-info, .contact-form {
-    padding: 1rem;
-  }
-
-  .info-item {
-    gap: 0.25rem;
-  }
-
-  .info-item h3 {
-    font-size: 0.95rem;
-  }
-
-  .info-item p {
-    font-size: 0.9rem;
-    word-break: break-word;
-  }
-
-  .social-link {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-/* Pour très petits écrans */
-@media screen and (max-width: 320px) {
-  .contact-info h2, .contact-form h2 {
-    font-size: 1.1rem;
-  }
-
-  .form-group label {
-    font-size: 0.9rem;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    font-size: 0.9rem;
-  }
-}
-
 </style>

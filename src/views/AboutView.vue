@@ -1,295 +1,214 @@
 <script setup>
-import { ref } from 'vue'
-import cvFile from '../views/CV_NJETCHOU_NZEPA_DANIEL_2026.pdf'
-
-const cvDriveLink = cvFile // À remplacer par votre vrai lien
+import cvFile from "./CV_NJETCHOU_NZEPA_DANIEL_2026.pdf";
 </script>
-
 <template>
-  <div class="about">
-    <div class="container">
-      <h1 class="page-title">À propos de moi</h1>
-      
-      <div class="about-content">
-        <!-- Colonne gauche : CV visuel -->
-        <div class="cv-section">
-          <h2>Mon CV</h2>
-          <div class="cv-visual-container">
-            <img 
-              src="../assets/cv-visual.png" 
-              alt="Visualisation du CV" 
-              class="cv-visual"
-            />
-            <div class="cv-overlay">
-              <a :href="cvDriveLink" target="_blank" class="download-btn">
-                <span class="icon">📄</span>
-                Télécharger CV (PDF)
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Colonne droite : Bio détaillée -->
-        <div class="bio-section">
-          <h2>Qui suis-je ?</h2>
-          <p class="bio-text">
-            Je suis un étudiant en 3ème année de Génie Informatique à l'Institut Ucac-Icam, 
-            passionné par la cybersécurité et le développement web aspirant à faire dans le domaine de la cybersécurité. Mon parcours m'a permis 
-            d'acquérir des compétences solides aussi bien en développement d'applications 
-            qu'en sécurité informatique.
+  <div class="page shell">
+    <p class="eyebrow"><i></i> PROFILE / 2026</p>
+    <div class="intro">
+      <h1>Un profil orienté<br /><em>défense.</em></h1>
+      <p>
+        Étudiant en 4e année à EFREI, campus Paris, je me spécialise
+        progressivement dans les métiers de la cybersécurité et des opérations
+        de sécurité.
+      </p>
+    </div>
+    <div class="content">
+      <aside>
+        <p class="label">FORMATION</p>
+        <h3>EFREI Paris</h3>
+        <p>4e année — ingénierie informatique<br />Campus Paris</p>
+        <a :href="cvFile" target="_blank" class="cv">Télécharger mon CV ↗</a>
+      </aside>
+      <div>
+        <section>
+          <p class="label">OBJECTIF</p>
+          <h2>Détecter, analyser, répondre.</h2>
+          <p class="body">
+            Mon intérêt se porte particulièrement sur le SOC, l’analyse des
+            événements de sécurité, les réseaux et l’automatisation de la
+            réponse aux incidents.
           </p>
-
-          <h3>Formation</h3>
-          <ul class="education-list">
-            <li>
-              <strong>Institut Ucac-Icam</strong> - Génie Informatique (2023-en cours)
-            </li>
-            <li>
-              <strong>College Libermann</strong> - Baccalauréat D
-            </li>
-          </ul>
-
-          <h3>Certifications</h3>
-          <ul class="cert-list">
-            <li>CCNA 1 - Cisco</li>
-            <li>TryHackMe - SOC Level 1 (en cours)</li>
-          </ul>
-
-          <h3>Expériences professionnelles</h3>
-          
-          <div class="experience">
-            <h4>Prise en main et configuration d'un SIEM</h4>
-            <p class="company">Stage en entreprise</p>
-            <p>Installation et configuration de Wazuh (SIEM/XDR) pour la collecte et la surveillance des logs, facilitant la détection des pannes et bugs réseau.</p>
+        </section>
+        <section>
+          <p class="label">EXPÉRIENCES & PROJETS</p>
+          <div class="timeline">
+            <article>
+              <b>Configuration SIEM / XDR</b><span>Stage en entreprise</span>
+              <p>
+                Installation et configuration de Wazuh pour centraliser les
+                journaux et améliorer la détection d’incidents.
+              </p>
+            </article>
+            <article>
+              <b>Infrastructure SOC</b><span>ITGStore</span>
+              <p>
+                Collaboration à l’intégration de Wazuh, Shuffle, Grafana et
+                OpenVAS dans une approche de supervision sécurité.
+              </p>
+            </article>
           </div>
-
-          <div class="experience">
-            <h4>Système de détection et réponse aux incidents</h4>
-            <p class="company">ITGStore</p>
-            <p>Collaboration avec l'équipe cybersécurité pour mettre en place une infrastructure SOC intégrant Wazuh, Shuffle, Grafana et OpenVAS.</p>
+        </section>
+        <section>
+          <p class="label">CERTIFICATIONS & APPRENTISSAGE</p>
+          <div class="tags">
+            <span>CCNA 1 — Cisco</span><span>TryHackMe SOC Level 1</span
+            ><span>Wireshark</span><span>Kali Linux</span>
           </div>
-
-          <h3>Langues</h3>
-          <ul class="languages">
-            <li>Français - Langue maternelle</li>
-            <li>Anglais - Niveau intermédiaire</li>
-          </ul>
-
-          <h3>Centres d'intérêt</h3>
-          <ul class="interests">
-            <li>📚 Lecture</li>
-            <li>🎬 Anime</li>
-            <li>🎮 Jeux vidéos</li>
-            <li>🔐 Cybersécurité (TryHackMe)</li>
-          </ul>
-        </div>
+        </section>
       </div>
     </div>
   </div>
 </template>
-
 <style scoped>
-.about {
-  background: #f5f5f5;
-  min-height: 100vh;
-  padding: 4rem 2rem;
+.page {
+  padding: 92px 0 120px;
 }
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+.eyebrow,
+.label {
+  color: var(--mint);
+  font:
+    500 10px "DM Mono",
+    monospace;
+  letter-spacing: 1.7px;
 }
-
-.page-title {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 3rem;
-  position: relative;
+.eyebrow i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 9px;
+  background: var(--mint);
+  border-radius: 50%;
 }
-
-.page-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: #667eea;
-}
-
-.about-content {
+.intro {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 50px;
+  align-items: end;
+  padding: 15px 0 90px;
+  border-bottom: 1px solid var(--line);
 }
-
-.cv-section h2, .bio-section h2 {
-  color: #333;
-  margin-bottom: 1.5rem;
+h1 {
+  font-size: clamp(45px, 6vw, 76px);
+  letter-spacing: -3px;
+  line-height: 1;
+  margin: 0;
 }
-
-.cv-visual-container {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+em {
+  color: var(--mint);
+  font-style: normal;
 }
-
-.cv-visual {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s;
-}
-
-.cv-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(102, 126, 234, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.cv-visual-container:hover .cv-overlay {
-  opacity: 1;
-}
-
-.cv-visual-container:hover .cv-visual {
-  transform: scale(1.05);
-}
-
-.download-btn {
-  background: white;
-  color: #667eea;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: transform 0.3s;
-}
-
-.download-btn:hover {
-  transform: translateY(-2px);
-}
-
-.icon {
-  font-size: 1.2rem;
-}
-
-.bio-text {
-  color: #666;
+.intro > p,
+.body,
+aside > p {
+  color: var(--muted);
+  font-size: 14px;
   line-height: 1.8;
-  margin-bottom: 2rem;
+  margin: 0;
 }
-
-.bio-section h3 {
-  color: #333;
-  margin: 2rem 0 1rem;
-  font-size: 1.3rem;
+.content {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 85px;
+  padding-top: 55px;
 }
-
-.education-list, .cert-list, .languages, .interests {
-  list-style: none;
-  padding: 0;
+aside {
+  border-right: 1px solid var(--line);
+  padding-right: 34px;
 }
-
-.education-list li, .cert-list li, .languages li, .interests li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #eee;
-  color: #666;
+aside h3 {
+  font-size: 19px;
+  margin: 15px 0 8px;
 }
-
-.experience {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.cv {
+  display: inline-block;
+  border: 1px solid var(--mint);
+  padding: 12px 14px;
+  color: var(--mint);
+  font-size: 11px;
+  font-weight: 800;
+  margin-top: 27px;
 }
-
-.experience h4 {
-  color: #333;
-  margin-bottom: 0.25rem;
+section {
+  padding-bottom: 42px;
+  margin-bottom: 42px;
+  border-bottom: 1px solid var(--line);
 }
-
-.experience .company {
-  color: #667eea;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+section:last-child {
+  border: 0;
 }
-
-.experience p {
-  color: #666;
-  line-height: 1.6;
+.label {
+  margin: 0 0 18px;
 }
-
-@media (max-width: 768px) {
-  .about-content {
-    grid-template-columns: 1fr;
+h2 {
+  font-size: 29px;
+  letter-spacing: -1px;
+  margin: 0 0 15px;
+}
+.body {
+  max-width: 600px;
+}
+.timeline {
+  display: grid;
+  gap: 15px;
+}
+.timeline article {
+  padding: 20px;
+  background: var(--panel);
+  border-left: 2px solid var(--mint);
+}
+.timeline b {
+  font-size: 14px;
+  display: block;
+}
+.timeline span {
+  display: block;
+  color: var(--mint);
+  font:
+    10px "DM Mono",
+    monospace;
+  margin: 7px 0;
+}
+.timeline p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tags span {
+  border: 1px solid var(--line);
+  padding: 9px 11px;
+  color: #d5e7de;
+  font:
+    11px "DM Mono",
+    monospace;
+}
+@media (max-width: 650px) {
+  .page {
+    padding: 65px 0;
+  }
+  .intro,
+  .content {
+    display: block;
+  }
+  .intro {
+    padding-bottom: 50px;
+  }
+  .intro > p {
+    margin-top: 25px;
+  }
+  .content {
+    padding-top: 38px;
+  }
+  aside {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 35px;
+    margin-bottom: 38px;
   }
 }
-
-
-@media screen and (max-width: 768px) {
-  .about {
-    padding: 2rem 1rem;
-  }
-
-  .page-title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .about-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .cv-section, .bio-section {
-    padding: 1rem;
-  }
-
-  .cv-section h2, .bio-section h2 {
-    font-size: 1.3rem;
-  }
-
-  .bio-text {
-    font-size: 0.95rem;
-  }
-
-  .experience {
-    padding: 1rem;
-  }
-
-  .download-btn {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .page-title {
-    font-size: 1.8rem;
-  }
-
-  .experience h4 {
-    font-size: 1rem;
-  }
-
-  .company {
-    font-size: 0.85rem;
-  }
-}
-
 </style>
