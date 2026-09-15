@@ -19,7 +19,7 @@ function closeMenu() {
       <nav class="nav shell" aria-label="Navigation principale">
         <RouterLink to="/" class="brand" @click="closeMenu">
           <span class="brand-mark">DN</span>
-          <span>Daniel N.<small>CYBERSECURITY</small></span>
+          <span><div class="special-name"> Daniel N. </div><small>CYBERSECURITY</small></span>
         </RouterLink>
 
         <div class="nav-actions">
@@ -160,7 +160,6 @@ main {
   display: flex;
   align-items: center;
   gap: 11px;
-  color: var(--text);
   font-weight: 800;
   font-size: 14px;
   letter-spacing: -0.4px;
