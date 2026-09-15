@@ -85,13 +85,13 @@ function closeMenu() {
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
 
 .theme-dark {
-  --ink: #0d090a;
-  --surface: #171011;
-  --panel: #211719;
-  --line: rgba(255, 226, 226, 0.14);
-  --muted: #b7a6a8;
-  --text: #fff8f7;
-  --mint: #bb6a70;
+  --ink: #090a0f;
+  --surface: #101117;
+  --panel: #171820;
+  --line: rgba(235, 237, 245, 0.12);
+  --muted: #a5a7b2;
+  --text: #f4f3f5;
+  --mint: #c86d72;
 }
 
 .theme-light {
@@ -160,6 +160,7 @@ main {
   display: flex;
   align-items: center;
   gap: 11px;
+  color: var(--text);
   font-weight: 800;
   font-size: 14px;
   letter-spacing: -0.4px;

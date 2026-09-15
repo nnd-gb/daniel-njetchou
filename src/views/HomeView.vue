@@ -137,17 +137,32 @@ const skills = [
   background:
     radial-gradient(
       circle at 81% 45%,
-      rgba(132, 40, 49, 0.22),
-      transparent 26%
+      rgba(144, 58, 66, 0.16),
+      transparent 24%
     ),
-    linear-gradient(120deg, #10090a, #1a0e10);
+    radial-gradient(
+      circle at 18% 105%,
+      rgba(65, 70, 94, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(125deg, #090a0f, #101117);
 }
 :global(.theme-dark) .signal-panel,
 :global(.theme-dark) .project-card {
-  background-color: #1a1012;
+  background: #14151c;
 }
 :global(.theme-dark) .skills {
-  background: #130d0e;
+  background: #0d0e14;
+}
+:global(.theme-dark) .project-card {
+  background: linear-gradient(145deg, #171820, #101117);
+}
+:global(.theme-dark) .project-card:hover {
+  background: #1b1b24;
+  border-color: rgba(200, 109, 114, 0.65);
+}
+:global(.theme-dark) .signal-panel {
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.32);
 }
 :global(.theme-light) .hero {
   background:
