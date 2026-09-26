@@ -1,5 +1,5 @@
 <script setup>
-import cvFile from "./CV_NJETCHOU_NZEPA_DANIEL_2026.pdf";
+import cvFile from "./CV_NJETCHOU_2026-2027";
 </script>
 <template>
   <div class="page shell">
