@@ -19,7 +19,7 @@ function submitMessage() {
           cybersécurité pour la rentrée 2027.
         </p>
         <div class="direct-details">
-          <a href="tel:+33758906654">+33 7 58 90 66 54</a>
+          <a href="tel:+33753271294">+33 7 53 27 12 94</a>
           <span>France · Île-de-France</span>
         </div>
       </div>
