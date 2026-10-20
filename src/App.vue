@@ -1,8 +1,8 @@
 <script setup>
 import { ref, watch } from "vue";
 import { RouterLink, RouterView } from "vue-router";
-//import cvFile from "./views/CV_NJETCHOU_NZEPA_DANIEL_2026.pdf?url";
 
+const cvUrl = `${import.meta.env.BASE_URL}CV_NJETCHOU_2026-2027.pdf`;
 const isMenuOpen = ref(false);
 const theme = ref(localStorage.getItem("portfolio-theme") || "dark");
 
@@ -49,7 +49,7 @@ function closeMenu() {
           <RouterLink to="/" @click="closeMenu">Accueil</RouterLink>
           <RouterLink to="/about" @click="closeMenu">Profil</RouterLink>
           <RouterLink to="/contact" @click="closeMenu">Contact</RouterLink>
-          <a :href="views/CV_NJETCHOU_NZEPA_DANIEL_2026.pdf" download>Télécharger le CV</a>
+          <a :href="cvUrl" download>Télécharger le CV</a>
         </div>
       </nav>
     </header>

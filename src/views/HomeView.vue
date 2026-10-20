@@ -1,6 +1,6 @@
 <script setup>
 import ProjectCard from "../components/ProjectCard.vue";
-//import cvFile from "./CV_NJETCHOU_NZEPA_DANIEL_2026.pdf?url";
+const cvUrl = `${import.meta.env.BASE_URL}CV_NJETCHOU_2026-2027.pdf`;
 const projects = [
   {
     number: "01",
@@ -64,9 +64,7 @@ const skills = [
           <div class="actions">
             <a href="#projects" class="button primary"
               >Explorer mes projets <span>↓</span></a
-            ><a :href="CV_NJETCHOU_NZEPA_DANIEL_2026.pdf" target="_blank" class="button ghost"
-              >Consulter le CV ↗</a
-            >
+            ><a :href="cvUrl" target="_blank" rel="noreferrer" class="button ghost">Consulter le CV ↗</a>
           </div>
         </div>
         <div class="signal-panel">

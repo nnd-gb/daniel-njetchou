@@ -1,4 +1,5 @@
 <script setup>
+const cvUrl = `${import.meta.env.BASE_URL}CV_NJETCHOU_2026-2027.pdf`;
 </script>
 <template>
   <div class="page shell">
@@ -16,7 +17,7 @@
         <p class="label">FORMATION</p>
         <h3>EFREI Paris</h3>
         <p>4e année — ingénierie informatique<br />Campus Paris</p>
-        <a href="/CV_NJETCHOU_2026-2027.pdf" target="_blank" rel="noopener noreferrer" class="cv">Télécharger mon CV ↗</a>
+        <a :href="cvUrl" download class="cv">Télécharger mon CV ↗</a>
       </aside>
       <div>
         <section>
